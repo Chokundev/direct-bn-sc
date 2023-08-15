@@ -1,0 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Mali&display=swap');
+    
+body {
+      font-family: 'Mali', cursive;
+    }
+
+footer {
+    padding-top: 120px;
+    text-align: center;
+    font-size: 12px;
+}
+
