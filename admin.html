@@ -3,11 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
+    <title>Login Page</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.0.19/dist/sweetalert2.all.min.js"></script>
     <link rel="stylesheet" href="style.css">
+    
 </head>
-<body>
-    <h1>เข้ามาทำเหี้ยอะไร!!</h1>
-    <marquee behavior="" direction="">ควย ควย ควย ควย ควย ควย 👆 กลับหน้าหลัก</marquee>
+<body class="bg-gray-100 flex justify-center items-center h-screen">
+    <div class="w-full max-w-sm p-6 bg-white rounded shadow-md">
+        <center>
+            <img src="logo.png" alt="" width="30%">
+            <h6 class="text-1xl font-semibold mb-4">ระบบจัดการสายตรงคณะกรรมการนักเรียน</h6>
+        </center>
+        
+        
+        <form>
+            <div class="mb-4">
+                <label for="username" class="block text-sm font-medium text-gray-700">ชื่อผู้ใช้</label>
+                <input type="text" id="username" name="username" class="mt-1 px-4 py-2 w-full border rounded-lg focus:ring focus:ring-indigo-300" >
+            </div>
+            <div class="mb-4">
+                <label for="password" class="block text-sm font-medium text-gray-700">รหัสผ่าน</label>
+                <input type="password" id="password" name="password" class="mt-1 px-4 py-2 w-full border rounded-lg focus:ring focus:ring-indigo-300" >
+            </div>
+            <div class="flex items-center justify-between">
+                
+                <!-- <a href="#" class="text-sm text-indigo-600 hover:underline">ลืมรหัสผ่าน?</a> -->
+            </div>
+        </form>
+        <button class="px-4 py-2 bg-indigo-500 text-white rounded hover:bg-indigo-600 focus:outline-none focus:ring focus:ring-indigo-300" onclick="login()">เข้าสู่ระบบ</button>
+    </div>
 </body>
+<script>
+    function login(){
+        Swal.fire({
+  icon: 'error',
+  title: 'โอ๊ะะโอ่...',
+  text: 'เข้ามาทำเหี้ยอะไร!',
+  footer: '<a href="">Why do I have this issue?</a>'
+})
+    }
+</script>
 </html>
