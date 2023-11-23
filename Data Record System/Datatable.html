@@ -1,0 +1,60 @@
+<script>
+  
+    window.onload = function(e){ 
+     document.getElementById("loading").classList.remove('invisible');
+     }
+     
+    google.script.run.withSuccessHandler(showData).getData();
+  
+    function showData(dataArray){
+      document.getElementById("loading").classList.add('invisible');  
+      $(document).ready(function(){
+       
+      $('#data-table').DataTable({
+      
+          // ข้อมูล
+          data: dataArray.slice(1),
+            
+          // หัวคอลัมภ์
+          columns: [
+            { title:"ข้อความถึงพี่ๆ"},
+            { title:"ชื่อเพลง"},
+            { title: "ลิงค์เพลง"},
+            { title: "ประทับเวลา"},                 
+            
+          ],
+  
+        lengthMenu: [
+            [5, 10, 25, 50, 100, -1 ],
+            ['5', '10', '25', '50','100', 'ทั้งหมด' ]
+        ],
+  
+        responsive: true,
+        ordering: false,
+        destroy: true,
+        
+        language: {
+        sProcessing: "กำลังดำเนินการ...",
+        sLengthMenu: "_MENU_ ",
+        sZeroRecords: "ไม่พบข้อมูล",
+        sInfo: '<i class="fas fa-angle-double-left"></i> _START_ ถึง _END_ จาก _TOTAL_ <i class="fas fa-angle-double-right"></i>',
+        sInfoEmpty: "แสดง 0 ถึง 0 จาก 0 แถว",
+        sInfoFiltered: "(กรองข้อมูล _MAX_ ทุกแถว)",
+        sInfoPostFix: "",
+        sSearch: '<i class="fas fa-search" fa-2x></i> ค้นหา:',
+        sUrl: "",
+        oPaginate: {
+          sFirst: "หน้าแรก",
+          sPrevious: '<i class="fas fa-chevron-left fa-lg" ></i>',
+          sNext: '<i class="fas fa-chevron-right fa-lg"></i>',
+          sLast: "หน้าสุดท้าย"
+        }, 
+      },
+  
+        });
+      
+      });
+    }
+  
+  </script>
+  

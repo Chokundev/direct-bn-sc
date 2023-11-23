@@ -1,0 +1,60 @@
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/2.3.0/js/dataTables.responsive.min.js"></script>
+<script src="https://cdn.datatables.net/responsive/2.3.0/js/responsive.bootstrap5.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+<script>
+  function preventFormSubmit() {
+        var forms = document.querySelectorAll('form');
+        for (var i = 0; i < forms.length; i++) {
+          forms[i].addEventListener('submit', function(event) {
+            event.preventDefault();
+          });
+        }
+      }
+  window.addEventListener('load', preventFormSubmit);
+
+  function handleFormSubmit(formObject){
+    document.getElementById("btn1").style.display="none";
+    document.getElementById("btn2").style.display="block";
+
+    google.script.run.withSuccessHandler(updateUrl).uploadFiles(formObject);
+  }
+
+  function updateUrl(output) {
+    var div = document.getElementById('output');
+    document.getElementById("myForm").reset();
+    google.script.run.withSuccessHandler(showData).getData();
+    document.getElementById("btn2").style.display="none";
+    document.getElementById("btn1").style.display="block";
+    document.getElementById("btnmodal").click();
+
+     var div =  document.createElement('div')
+            div.setAttribute('id','tb')
+            document.body.appendChild(div)
+            document.getElementById('tb').innerHTML = 
+           `<tr>                              
+            <th scope='col'>ข้อความถึงพี่ๆ</th>
+            <td scope='col'>${output.data[0]}</td>
+            </tr>
+            <tr>                              
+            <th scope='col'>ชื่อเพลง</th>
+            <td scope='col'>${output.data[1]}</td>
+            </tr>
+            <tr>                              
+            <th scope='col'>ลิงค์เพลง</th>
+            <td scope='col'>${output.data[2]}</td>
+            </tr>
+             <tr>                              
+            <th scope='col'>ประทับเวลา</th>
+            <td scope='col'>${output.data[3]}</td>
+            </tr>`
+
+         
+           }
+
+
+            
+</script>
